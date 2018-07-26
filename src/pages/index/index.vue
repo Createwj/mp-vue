@@ -36,7 +36,7 @@
 
 <script>
 import card from '@/components/card'
-
+import {mapMutations} from 'vuex'
 export default {
   data () {
     return {
@@ -77,12 +77,17 @@ export default {
     },
     clickHandle (msg, ev) {
       console.log('clickHandle:', msg, ev)
-    }
+    },
+    ...mapMutations({
+      setShopId: 'SET_SHOPID'
+    })
   },
 
   created () {
+
     // 调用应用实例的方法获取全局数据
     this.getUserInfo()
+    this.setShopId(123)
   }
 }
 </script>

@@ -43,3 +43,7 @@ https://wendux.github.io/dist/#/doc/flyio/readme
 
 // 配置mpvue基本目录机构文章描述
 https://blog.csdn.net/qq_31393401/article/details/80728523
+
+
+vuex-persistedstate
+可以将vuex数据持久化到本地

@@ -6,6 +6,9 @@ var Fly=require("flyio/dist/npm/wx")
 var fly=new Fly
 
 Vue.prototype.$http=fly
+import store from './store/index'
+Vue.prototype.$store=store;
+
 Vue.config.productionTip = false
 App.mpType = 'app'
 

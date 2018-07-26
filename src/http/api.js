@@ -7,8 +7,12 @@ const appKey = config.appKey;
 const appid = config.appid;
 
 
-export const getInter = (params) => {
+export const get = (params) => {
     return fly.get(`${host}${params.url}`,qs.stringify(params.data))
+};
+
+export const post = (params) => {
+    return fly.post(`${host}${params.url}`,qs.stringify(params.data))
 };
 
 // export function getInter(){

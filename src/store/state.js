@@ -1,4 +1,4 @@
 const state = {
-  shopId:{}
+  shopId:''
 }
 export default state

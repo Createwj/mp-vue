@@ -19,7 +19,8 @@
 
 <script>
 import card from '@/components/card'
-import {getInter} from '@/http/api'
+import {get,post} from '@/http/api'
+import {mapGetters} from 'vuex'
 export default {
   data () {
     return {
@@ -39,22 +40,33 @@ export default {
   components: {
     card
   },
-
+  computed: {
+    ...mapGetters([
+      'shopId'
+    ])
+  },
   methods: {
     switch2Change(e){
       console.log(e)
     }
   },
   onLoad(e){
+    console.log('这里是vuex保存的数据this.shopId'+this.shopId)
     console.log('onLoad'+e.id)
     this.motto = e.id
+    //传递参数 配置发送请求的所需数据
     let params = {
       url:'/community/h5/discussions/1jeeidl/detail',
       data:{
         id:1
       }
     }
-     getInter(params)
+    get(params).then((res)=>{
+      console.log(res.data)
+    })
+     // post(params).then((res)=>{
+     //   console.log(res.data)
+     // })
   },
   onShow (options) {
     console.log(options)
