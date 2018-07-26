@@ -14,11 +14,23 @@
       </div>
     </div>
 
+    <picker mode="date" :value="date" start="2015-09-01" end="2017-09-01" @change="bindDateChange">
+      <view class="picker">
+        支持原生小程序时间选择器{{date}}
+      </view>
+    </picker>
+
+
+
+
     <form class="form-container">
       <input type="text" class="form-control" v-model="motto" placeholder="v-model" />
       <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
     </form>
     <a href="/pages/counter/main" class="counter">123跳到Vuex页面</a>
+
+    <a href="/pages/pag/main" class="counter">跳到新的页面</a>
+    <div @click="jump('123',$event)">跳转传参数&&发送请求&&使用原生小程序的组件</div>
   </div>
 </template>
 
@@ -29,7 +41,8 @@ export default {
   data () {
     return {
       motto: 'Hello World',
-      userInfo: {}
+      userInfo: {},
+      date:'2015-11-01'
     }
   },
 
@@ -38,8 +51,16 @@ export default {
   },
 
   methods: {
+    bindDateChange(e,q){
+      console.log(e)
+      console.log(q)
+    },
+    jump(){
+      let url = '/pages/pag/main?id='+this.motto
+      wx.navigateTo({url})
+    },
     bindViewTap () {
-      const url = '../logs/main'
+      const url = '/pages/pag/main'
       wx.navigateTo({ url })
     },
     getUserInfo () {
@@ -85,7 +106,6 @@ export default {
 }
 
 .usermotto {
-  margin-top: 150px;
 }
 
 .form-control {
