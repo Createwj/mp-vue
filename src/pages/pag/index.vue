@@ -19,7 +19,7 @@
 
 <script>
 import card from '@/components/card'
-
+import {getInter} from '@/http/api'
 export default {
   data () {
     return {
@@ -48,10 +48,13 @@ export default {
   onLoad(e){
     console.log('onLoad'+e.id)
     this.motto = e.id
-
-     this.$http.get('https://quanzi.qufaya.com/community/h5/discussions/1jeeidl/detail').then((res)=>{
-      console.log(res)
-    })
+    let params = {
+      url:'/community/h5/discussions/1jeeidl/detail',
+      data:{
+        id:1
+      }
+    }
+     getInter(params)
   },
   onShow (options) {
     console.log(options)
