@@ -8,6 +8,8 @@
       </div>
     </div>
 
+    <div @click="jumpShop">积分商城</div>
+
     <div class="usermotto">
       <div class="user-motto">
         <card :text="motto"></card>
@@ -53,7 +55,7 @@
     <a href="/pages/scroll/main" class="counter">上拉加载更多 下拉刷新</a>
     <div @click="jump('123',$event)">跳转传参数&&发送请求&&使用原生小程序的组件</div>
     <popMessage v-if="infoBox" :text="info"></popMessage>
-    <button open-type="getUserInfo" lang="zh_CN" @bindgetuserinfo="onGotUserInfo">获取用户信息</button>
+    <button open-type="getUserInfo" lang="zh_CN" @getuserinfo="getUserInfo()">获取用户信息</button>
   </div>
 </template>
 
@@ -79,10 +81,12 @@ export default {
     popMessage
   },
   onLoad(){
+    this.getUserInfo()
+    this.setShopId(123)
     console.log('log')
     console.log(wx.getUserInfo())
-        console.log('log')
-
+    console.log('log')
+    wx.setStorageSync('token','d95c9ffe-39ae-4ee3-a6ab-500759d7722e')
   },
   methods: {
     onPullDownRefresh(e){
@@ -100,6 +104,12 @@ export default {
         icon: 'success',
         duration: 2000,
          mask:true
+      })
+    },
+    jumpShop(){
+      // 小程序跳转页面
+      wx.navigateTo({
+        url: '/pages/rewordshop/main'
       })
     },
     loadding(){
@@ -178,6 +188,7 @@ export default {
       const url = '/pages/pag/main'
       wx.navigateTo({ url })
     },
+
     getUserInfo () {
       // 调用登录接口
       wx.login({
@@ -191,6 +202,8 @@ export default {
         }
       })
     },
+
+
     clickHandle (msg, ev) {
       console.log('clickHandle:', msg, ev)
     },
@@ -202,8 +215,7 @@ export default {
   created () {
 
     // 调用应用实例的方法获取全局数据
-    this.getUserInfo()
-    this.setShopId(123)
+
   }
 }
 </script>

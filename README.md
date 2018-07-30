@@ -46,3 +46,7 @@ https://blog.csdn.net/qq_31393401/article/details/80728523
 
 vuex-persistedstate
 可以将vuex数据持久化到本地
+
+
+解析富文本 可以讲后台返回的html或者markdown语法的代码转换成视图
+http://npm.taobao.org/package/mpvue-wxparse
