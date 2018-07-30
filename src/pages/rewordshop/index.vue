@@ -33,8 +33,9 @@
           </p>
         </div>
       </div>
-
     </div>
+        <div class="noMessage">没有更多商品了呦～</div>
+
   </div>
 </template>
 
@@ -211,5 +212,12 @@ page{
 }
 .num{
   margin-top: 5rpx;
+}
+.noMessage {
+  color: #ccc;
+  text-align: center;
+  margin-top: 30rpx;
+  margin-bottom: 20px;
+  font-size: 14px;
 }
 </style>
