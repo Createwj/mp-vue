@@ -5,10 +5,9 @@
          <img src="https://img2.qufaya.com/675d91f1-fe25-4ecb-a9db-12c29b0b79d1.png">
       </div>
       <div class="item">
-        <p>圈子账本抱枕</p>
-        <p>已发货</p>
+        <p class="name">圈子账本抱枕</p>
+        <p class="state">已发货</p>
       </div>
-
     </div>
     <div class="noMessage">没有更多商品了呦～</div>
   </div>
@@ -47,17 +46,45 @@ page{
   background: #f6f6f6;
 }
 .shopItem{
+  position: relative;
   display: flex;
   background: #fff;
   height: 180rpx;
   box-sizing: border-box;
   border-top: 1rpx solid #ebebeb;
 }
+.shopItem:before{
+  content:' ';
+  display: inline-block;
+  position: absolute;
+  right: 50rpx;
+  top: 47%;
+  transform: rotate(-45deg) translateY(-50%);
+  width: 15rpx;
+  height: 15rpx;
+  border-bottom: 1px solid #999;
+  border-right: 1px solid #999;
+}
 .item img{
   width: 120rpx;
   height: 120rpx;
   margin-left: 37rpx;
   margin-top: 25rpx;
+}
+.name{
+  margin-top: 36rpx;
+  margin-left: 33rpx;
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular;
+}
+.state{
+  margin-left: 33rpx;
+  font-size: 12px;
+  display: inline-block;
+  border: 1px solid #fcad3b;
+  color: #fcad3b;
+  border-radius: 5rpx;
+  padding: 3rpx 5rpx;
 }
 .noMessage {
   color: #ccc;
