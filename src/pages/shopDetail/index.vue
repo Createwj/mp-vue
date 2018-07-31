@@ -1,6 +1,5 @@
 <template>
   <div class="wrapper">
-    <div class="loadding" v-show="loadding">加载动画</div>
     <div class="swiperBox">
       <swiper :indicator-dots="indicatorDots"
       :autoplay="autoplay" :interval="interval" :duration="duration">
@@ -19,7 +18,7 @@
         <span class="num">库存{{detail.inventory}}件</span>
       </div>
     </div>
-    <div class="shopDetail" @click="copyText">
+    <div class="shopDetail">
       商品详情
     </div>
     <div class="link">
@@ -46,8 +45,9 @@ export default {
   },
   data(){
     return{
-      loadding:true,
       shopDetail:{},
+      motto: '',
+      userInfo: {},
       imgUrls: [],
       indicatorDots: true,
       autoplay: true,
@@ -58,37 +58,20 @@ export default {
     }
   },
   onLoad(e){
-    this.loadding = true
     console.log(e.id)
     let params = {
       url:'/pointsshop/goods/'+e.id+'/detail?token='+wx.getStorageSync('token'),
       data:{}
     }
     get(params).then((res)=>{
-
       this.imgUrls = []
       this.detail = res.data
       this.article = res.data.description
       this.imgUrls.push(res.data.banner.substring(1,res.data.banner.length-1).split(',')[0].split('"')[1])
-      this.loadding = false
     })
     //
   },
   methods:{
-    copyText(){  //  微信小程序复制文本
-      wx.setClipboardData({
-　　　　　　data: '啦啦啦吧啦吧啦吧啦',
-　　　　　　success: function (res) {
-　　　　　　　　wx.getClipboardData({
-　　　　　　　　　　success: function (res) {
-　　　　　　　　　　　　wx.showToast({
-　　　　　　　　　　　　　　title: '复制成功'
-　　　　　　　　　　　　})
-　　　　　　　　　　}
-　　　　　　　　})
-　　　　　　}
-　　　　})
-    },
     switch2Change(e){
       console.log(e)
     },
@@ -100,9 +83,6 @@ export default {
       // do something
       console.log(e)
     }
-  },
-  beforeDestroy(){
-    console.log('组件进行销毁')
   }
 }
 </script>
@@ -224,14 +204,5 @@ swiper{
 .btn:active{
   background: #C87F05;
 }
-.loadding{
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background: #fff;
-  z-index: 100;
-  text-align: center;
-}
+
 </style>

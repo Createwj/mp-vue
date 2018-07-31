@@ -50,11 +50,3 @@ vuex-persistedstate
 
 解析富文本 可以讲后台返回的html或者markdown语法的代码转换成视图
 http://npm.taobao.org/package/mpvue-wxparse
-
-
-微信复制文本
-商品详情点击商品详情 触发复制商品详情的函数 复制文本 弹窗显示复制成功
-
-
-小程序公用一个页面显示商品的时候 添加加载动画 通过变量控制加载动画的显示
-当小程序onLoad的时候将加载动画显示 数据成功返回的时候控制加载动画进行隐藏
