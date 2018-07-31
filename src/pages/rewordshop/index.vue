@@ -35,7 +35,6 @@
       </div>
     </div>
         <div class="noMessage">没有更多商品了呦～</div>
-
   </div>
 </template>
 
