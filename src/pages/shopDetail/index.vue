@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    <div class="loadding" v-show="loadding">加载动画</div>
     <div class="swiperBox">
       <swiper :indicator-dots="indicatorDots"
       :autoplay="autoplay" :interval="interval" :duration="duration">
@@ -46,8 +47,8 @@ export default {
   data(){
     return{
       shopDetail:{},
-      motto: '',
-      userInfo: {},
+
+      loadding:false,
       imgUrls: [],
       indicatorDots: true,
       autoplay: true,
@@ -58,6 +59,7 @@ export default {
     }
   },
   onLoad(e){
+    this.loadding = true
     console.log(e.id)
     let params = {
       url:'/pointsshop/goods/'+e.id+'/detail?token='+wx.getStorageSync('token'),
@@ -68,6 +70,7 @@ export default {
       this.detail = res.data
       this.article = res.data.description
       this.imgUrls.push(res.data.banner.substring(1,res.data.banner.length-1).split(',')[0].split('"')[1])
+      this.loadding = false
     })
     //
   },
@@ -204,5 +207,14 @@ swiper{
 .btn:active{
   background: #C87F05;
 }
-
+.loadding{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+  background: #fff;
+  z-index: 100;
+}
 </style>
