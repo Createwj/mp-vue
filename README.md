@@ -50,3 +50,7 @@ vuex-persistedstate
 
 解析富文本 可以讲后台返回的html或者markdown语法的代码转换成视图
 http://npm.taobao.org/package/mpvue-wxparse
+
+
+// mpvue中使用 echarts图标绘制图标软件
+https://github.com/F-loat/mpvue-echarts
