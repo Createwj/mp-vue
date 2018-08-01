@@ -4,7 +4,7 @@
       <button open-type="getUserInfo" class="logBtn" @getuserinfo="bindGetUserInfo">获取用户信息</button>
     </div>
     <div class="headerBox">
-      <div class="item">
+      <div class="item" @click="goEcharh">
         <img src="https://img2.qufaya.com/rewordShop/img/userReword.png">
         <div class="myScore">
           <p>我的积分</p>
@@ -69,6 +69,11 @@
       })
     },
     methods:{
+      goEcharh(){
+        wx.navigateTo({
+          url:'/pages/echart/main'
+        })
+      },
       goReword(){
         wx.navigateTo({
           url:'/pages/shopReword/main'
