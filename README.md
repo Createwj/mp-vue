@@ -271,7 +271,7 @@ option = {
 https://developers.weixin.qq.com/miniprogram/dev/api/share.html#wxshowsharemenuobject
 
 // 小程序分享基本逻辑
-
+```
  onShareAppMessage: function () {
     var that = this
 
@@ -305,3 +305,10 @@ https://developers.weixin.qq.com/miniprogram/dev/api/share.html#wxshowsharemenuo
       }
     }
   }
+```
+
+小程序跳转小程序 （同一个公众号之下的小程序 并非同一个appid）
+https://developers.weixin.qq.com/miniprogram/dev/api/navigateToMiniProgram.html
+
+
+小程序打开公众号文章

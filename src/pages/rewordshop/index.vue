@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    <!--<web-view src="https://mp.weixin.qq.com/s/PFndOafdcypQq9mIICXEXw"></web-view>-->
     <img @click="saveImg" style="display: block;margin: 0 auto" src="https://img2.qufaya.com/f7b8c67c-b390-4a86-a39d-9c027a775c122018-07-026.jpeg">
     <!-- 添加open-type属性 按钮会添加分享属性 调用页面唯一的分享配置钩子分享给朋友👬 -->
     <button class="calculateBtn" open-type="share">添加好友</button>
