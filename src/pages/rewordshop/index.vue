@@ -48,7 +48,8 @@
       return{
         dat:{},
         userInfo:{},
-        logStates:true
+        logStates:true,
+        url:'pages/rewordshop/main'
       }
     },
     onLoad(){
@@ -67,6 +68,25 @@
         console.log(res.data)
         this.dat = res.data
       })
+    },
+    onShareAppMessage(options) {
+      return {
+        title: '新城的小店',
+        path: this.url,
+        success: function (res) {
+          // that.web_url = return_url
+          // 转发成功
+            wx.showToast({
+              title: "转发成功",
+              icon: 'success',
+              duration: 2000
+            })
+
+        },
+        fail: function (res) {
+          // 转发失败
+        }
+      }
     },
     methods:{
       goEcharh(){
