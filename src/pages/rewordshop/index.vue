@@ -52,6 +52,10 @@
         url:'pages/rewordshop/main'
       }
     },
+    onPageScroll(e){
+      console.log(e)
+      console.log('页面滚动事件触发')
+    },
     onLoad(){
       console.log(wx.getStorageSync('userName'))
       if(wx.getStorageSync('userName').length !== 0){
