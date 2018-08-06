@@ -6,7 +6,7 @@ const host = config.host;
 const appKey = config.appKey;
 const appid = config.appid;
 
-
+// 封装fly  使用中间件 进行数据交互
 export const get = (params) => {
     return fly.get(`${host}${params.url}`,qs.stringify(params.data))
 };

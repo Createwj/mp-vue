@@ -2,6 +2,8 @@
 var Fly = require("flyio/dist/npm/wx")
 var fly = new Fly;
 
+// 配置加载进度条组件 进行请求的拦截以及数据的修改
+
 //配置请求基地址
 // //定义公共headers
 // fly.config.headers={xx:5,bb:6,dd:7}
@@ -24,6 +26,7 @@ fly.interceptors.request.use((request)=>{
     //可以显式返回request, 也可以不返回，没有返回值时拦截器中默认返回request
     return request;
 })
+
 
 //添加响应拦截器，响应拦截器会在then/catch处理之前执行
 fly.interceptors.response.use(

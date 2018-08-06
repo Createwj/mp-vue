@@ -52,11 +52,11 @@
         url:'pages/rewordshop/main'
       }
     },
-    onPageScroll(e){
+    onPageScroll(e){  // 页面发生滚动
       console.log(e)
       console.log('页面滚动事件触发')
     },
-    onLoad(){
+    onLoad(){  // 页面加载完毕
       console.log(wx.getStorageSync('userName'))
       if(wx.getStorageSync('userName').length !== 0){
         this.logStates = false
@@ -64,6 +64,8 @@
         this.logStates = true
       }
       wx.setStorageSync('token','d95c9ffe-39ae-4ee3-a6ab-500759d7722e')
+
+      // 发送请求
       let parems = {
         url:'/pointsshop/goods/list?token='+wx.getStorageSync('token'),
         data:{}
@@ -73,17 +75,50 @@
         this.dat = res.data
       })
     },
-    onShareAppMessage(options) {
+    onShareAppMessage(options) { // 点击右上角  绑定分享事件
       return {
         title: '新城的小店',
         path: this.url,
+        imageUrl: 'https://img2.qufaya.com/weui/shareImg.png',
         success: function (res) {
           // that.web_url = return_url
           // 转发成功
-            wx.showToast({
-              title: "转发成功",
-              icon: 'success',
-              duration: 2000
+          //   wx.showToast({
+          //     title: "转发成功",
+          //     icon: 'success',
+          //     duration: 2000
+          //   })
+          wx.showShareMenu({ // 显示发送目标信息
+           // 要求小程序返回分享目标信息
+            withShareTicket: true
+          });
+             wx.showModal({  // 微信提示信息
+              title: '提示',
+              content: '确定要加入该成员分享的账本吗？',
+              confirmColor: '#FFBE00',
+              success: function (res) {
+                if (res.confirm) {
+                  // console.log("这个是点击分享进来的哦---->>>>>", options);
+                  // wx.showLoading({
+                  //   title: '加载中……',
+                  // })
+                  // wx.request({
+                  //   url: apiUrl + 'wxapp/join/' + options.hasCode + '/2/joined',
+                  //   method: 'GET',
+                  //   header: { Authorization: wx.getStorageSync('token') },
+                  //   success: function (res) {
+                  //     wx.redirectTo({
+                  //       url: '/pages/account/aaBookIndex/index?id=' + options.groupId
+                  //     })
+                  //   }
+                  // })
+
+                } else if (res.cancel) {
+                  // wx.redirectTo({
+                  //   url: '/pages/account/index/index'
+                  // })
+                }
+              }
             })
 
         },

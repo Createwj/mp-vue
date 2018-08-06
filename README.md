@@ -265,3 +265,43 @@ option = {
         }
     ]
 };
+
+小程序开发文档
+基本简介wx对象的简介 以及参数的传递  通过传递参数 进行页面的跳转
+https://developers.weixin.qq.com/miniprogram/dev/api/share.html#wxshowsharemenuobject
+
+// 小程序分享基本逻辑
+
+ onShareAppMessage: function () {
+    var that = this
+
+    wx.request({
+      url: apiUrl + 'wxapp/join/code',
+      data: {
+        type: 2,
+        groupId: wx.getStorageSync('storeContent').groupId,
+        bookUuid: ''
+      },
+      method: 'POST',
+      header: { Authorization: wx.getStorageSync('token') },
+      success: function (res) {
+        console.log('----->>>邀请好友的', res.data.code)
+        wx.setStorageSync('memberCode', res.data.code)
+      }
+    })
+
+    var title = wx.getStorageSync('selfName') + '邀请您加入他的' + wx.getStorageSync('storeContent').aaBookName + '账本'
+    var testData = { id: wx.getStorageSync('memberCode'), groupId: wx.getStorageSync('storeContent').groupId }
+    return {
+      title: title, // 分享标题
+      desc: '我们的功能不仅记账', // 分享描述
+      imageUrl: 'https://img2.qufaya.com/weui/shareImg.png',
+      path: 'pages/account/shareIndex/index?hasCode=' + wx.getStorageSync('memberCode') + "&groupId=" + wx.getStorageSync('storeContent').groupId, // 分享路径
+      success: function(){
+        wx.showShareMenu({
+          // 要求小程序返回分享目标信息
+          withShareTicket: true
+        });
+      }
+    }
+  }
