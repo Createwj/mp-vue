@@ -53,6 +53,9 @@ http://npm.taobao.org/package/mpvue-wxparse
 
 
 // mpvue中使用 echarts图标绘制图标软件
+
+绘图控制对象 options 对echart样式 进行控制
+
 https://github.com/F-loat/mpvue-echarts
 
 
