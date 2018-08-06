@@ -61,6 +61,7 @@ export default {
   onLoad(e){
     this.loadding = true
     console.log(e.id)
+    console.log(e)
     let params = {
       url:'/pointsshop/goods/'+e.id+'/detail?token='+wx.getStorageSync('token'),
       data:{}

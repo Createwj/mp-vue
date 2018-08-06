@@ -275,7 +275,7 @@ https://developers.weixin.qq.com/miniprogram/dev/api/share.html#wxshowsharemenuo
  onShareAppMessage: function () {
     var that = this
 
-    wx.request({
+    wx.request({ // 发送请求后台
       url: apiUrl + 'wxapp/join/code',
       data: {
         type: 2,
@@ -286,7 +286,7 @@ https://developers.weixin.qq.com/miniprogram/dev/api/share.html#wxshowsharemenuo
       header: { Authorization: wx.getStorageSync('token') },
       success: function (res) {
         console.log('----->>>邀请好友的', res.data.code)
-        wx.setStorageSync('memberCode', res.data.code)
+        wx.setStorageSync('memberCode', res.data.code)  // 派发生成的数据
       }
     })
 
@@ -295,7 +295,7 @@ https://developers.weixin.qq.com/miniprogram/dev/api/share.html#wxshowsharemenuo
     return {
       title: title, // 分享标题
       desc: '我们的功能不仅记账', // 分享描述
-      imageUrl: 'https://img2.qufaya.com/weui/shareImg.png',
+      imageUrl: 'https://img2.qufaya.com/weui/shareImg.png',   // 使用后台派发的数据 传递参数 感知用户加入aa账本
       path: 'pages/account/shareIndex/index?hasCode=' + wx.getStorageSync('memberCode') + "&groupId=" + wx.getStorageSync('storeContent').groupId, // 分享路径
       success: function(){
         wx.showShareMenu({

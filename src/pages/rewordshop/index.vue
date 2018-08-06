@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    <img @click="saveImg" style="display: block;margin: 0 auto" src="https://img2.qufaya.com/f7b8c67c-b390-4a86-a39d-9c027a775c122018-07-026.jpeg">
     <div class="getUserBox"  v-show="logStates">
       <button open-type="getUserInfo" class="logBtn" @getuserinfo="bindGetUserInfo">获取用户信息</button>
     </div>
@@ -128,6 +129,49 @@
       }
     },
     methods:{
+      saveImg(){
+        //'',   参考地址
+        //  https://www.jianshu.com/p/5479041607fa
+      var imgSrc = "https://img2.qufaya.com/f7b8c67c-b390-4a86-a39d-9c027a775c122018-07-026.jpeg"
+          wx.downloadFile({  //  2。需要先将网络图片进行下载
+            url: imgSrc,
+            success: function (res) {
+              console.log(res);
+              //图片保存到本地
+
+              wx.saveImageToPhotosAlbum({   // 1。不能保存网络图片路径
+                filePath: res.tempFilePath,
+                success: function (data) {
+                  wx.showToast({
+                    title: '保存成功',
+                    icon: 'success',
+                    duration: 2000
+                  })
+                },
+                fail: function (err) {
+                  console.log(err);
+                  if (err.errMsg === "saveImageToPhotosAlbum:fail auth deny") {
+                    console.log("当初用户拒绝，再次发起授权")
+                    wx.openSetting({
+                      success(settingdata) {
+                        console.log(settingdata)
+                        if (settingdata.authSetting['scope.writePhotosAlbum']) {
+                          console.log('获取权限成功，给出再次点击图片保存到相册的提示。')
+                        } else {
+                          console.log('获取权限失败，给出不给权限就无法正常使用的提示')
+                        }
+                      }
+                    })
+                  }
+                },
+                complete(res){
+                  console.log(res);
+                }
+              })
+            }
+          })
+
+      },
       goEcharh(){
         wx.navigateTo({
           url:'/pages/echart/main'
@@ -140,7 +184,7 @@
       },
       goDetail(id){
         wx.navigateTo({
-          url: '/pages/shopDetail/main?id='+id
+          url: '/pages/shopDetail/main?id='+id+'&goodName=123'
         })
       },
       bindGetUserInfo (e) {

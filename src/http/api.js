@@ -1,5 +1,5 @@
 import fly from './config'
-import qs from 'qs'
+import qs from 'qs'  // 序列化参数
 
 import config from '../config'
 const host = config.host;
