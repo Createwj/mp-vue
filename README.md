@@ -58,8 +58,7 @@ http://npm.taobao.org/package/mpvue-wxparse
 
 https://github.com/F-loat/mpvue-echarts
 
-
-
+```
 var labelTop = {
     normal : {
         label : {
@@ -265,6 +264,7 @@ option = {
         }
     ]
 };
+```
 
 小程序开发文档
 基本简介wx对象的简介 以及参数的传递  通过传递参数 进行页面的跳转
