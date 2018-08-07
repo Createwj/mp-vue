@@ -5,6 +5,15 @@
     <!-- 添加open-type属性 按钮会添加分享属性 调用页面唯一的分享配置钩子分享给朋友👬 -->
     <button class="calculateBtn" open-type="share">添加好友</button>
 
+    <button class="calculateBtn"  @click="setBgColor">设置背景色</button>
+
+    <button class="calculateBtn" @click="setScreenMax">设置屏幕最亮</button>
+    <button class="calculateBtn" @click="setScreenMin">设置屏幕最暗</button>
+    <button class="calculateBtn" @click="makePhone">设置手机震动400ms</button>
+    <button class="calculateBtn" @click="makePhone15">设置手机震动15ms</button>
+    <button class="calculateBtn" @click="setPerson">添加手机联系人</button>
+    <button class="calculateBtn" @click="setArr">选项</button>
+
     <div class="getUserBox"  v-show="logStates">
       <button open-type="getUserInfo" class="logBtn" @getuserinfo="bindGetUserInfo">获取用户信息</button>
     </div>
@@ -103,8 +112,10 @@
               confirmColor: '#FFBE00',
               success: function (res) {
                 if (res.confirm) {
+
+                  // 微信小程序原生提示组件
                   // console.log("这个是点击分享进来的哦---->>>>>", options);
-                  // wx.showLoading({
+                  // wx.showLoading({  // 加载进度条
                   //   title: '加载中……',
                   // })
                   // wx.request({
@@ -133,6 +144,80 @@
       }
     },
     methods:{
+      setArr(){
+        wx.showActionSheet({
+          itemList: ['A', 'B', 'C'],
+          success: function(res) {
+            console.log(res.tapIndex)
+          },
+          fail: function(res) {
+            console.log(res.errMsg)
+          }
+        })
+      },
+      setScreenMax(){
+        wx.setScreenBrightness({
+          value:1,
+          success:function(){
+
+          }
+        })
+      },
+      setScreenMin(){
+        wx.setScreenBrightness({
+          value:0,
+          success:function(){
+
+          }
+        })
+      },
+      makePhone(){
+        // wx.vibrateShort
+        wx.vibrateLong({
+          success:function(){
+
+          }
+        })
+      },
+      makePhone15(){
+         wx.vibrateShort({
+          success:function(){
+
+          }
+        })
+      },
+      setPerson(){
+        wx.addPhoneContact({
+          firstName:'王江',
+          mobilePhoneNumber:'18435108809',
+          remark:'这是小程序保存的联系人',
+          weChatNumber:'13581839845',
+          success:function(){
+            wx.showToast({
+              title: '保存成功',
+              icon: 'success',
+              duration: 2000
+            })
+          }
+        })
+      },
+      setBgColor(){
+        wx.showNavigationBarLoading()
+        wx.setNavigationBarColor({
+            frontColor: '#ffffff',
+            backgroundColor: '#ff0000',
+            animation: {
+                duration: 400,
+                timingFunc: 'easeIn'
+            }
+        })
+        setTimeout(()=>{
+          wx.hideNavigationBarLoading()
+          wx.setNavigationBarTitle({
+            title: '动态修改title'
+          })
+        },3000)
+      },
       saveImg(){
         //'',   参考地址
         //  https://www.jianshu.com/p/5479041607fa

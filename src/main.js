@@ -33,6 +33,31 @@ export default {
       navigationBarBackgroundColor: '#000',
       navigationBarTitleText: 'mpvue入门demo',
       navigationBarTextStyle: '#fff'
-    }
+    },
+  //   "tabBar": {
+  //   "color": "#a9b7b7",
+  //   "selectedColor": "#11cd6e",
+  //   "borderStyle": "white",
+  //   "list": [
+  //     {
+  //       // "selectedIconPath": "/image/wechat.png",
+  //       // "iconPath": "/image/wechat.png",
+  //       "pagePath": "pages/rewordshop/main",
+  //       "text": "首页"
+  //     },
+  //     {
+  //       // "selectedIconPath": "/image/wechat.png",
+  //       // "iconPath": "/image/wechat.png",
+  //       "pagePath": "pages/rewordshop/main",
+  //       "text": "消息"
+  //     },
+  //     {
+  //       // "selectedIconPath": "/image/wechat.png",
+  //       // "iconPath": "/image/wechat.png",
+  //       "pagePath": "pages/rewordshop/main",
+  //       "text": "我的"
+  //     }
+  //   ]
+  // }
   }
 }

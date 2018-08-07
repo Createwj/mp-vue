@@ -312,3 +312,9 @@ https://developers.weixin.qq.com/miniprogram/dev/api/navigateToMiniProgram.html
 
 
 小程序打开公众号文章
+
+tabBar 小程序配置下边框组件
+
+配置在app.json文件中 配置颜色图标 点击之后的样式以及下标数量
+
+
