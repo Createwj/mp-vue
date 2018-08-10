@@ -7,6 +7,5 @@ app.$mount()
 export default {
   config: {
     navigationBarTitleText: '积分商城',
-
   }
 }

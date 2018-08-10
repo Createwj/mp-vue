@@ -13,7 +13,8 @@
     <button class="calculateBtn" @click="makePhone15">设置手机震动15ms</button>
     <button class="calculateBtn" @click="setPerson">添加手机联系人</button>
     <button class="calculateBtn" @click="setArr">选项</button>
-
+    <button class="calculateBtn" @click="userNum">微信步数</button>
+    <div>{{userNumber}}</div>
     <div class="getUserBox"  v-show="logStates">
       <button open-type="getUserInfo" class="logBtn" @getuserinfo="bindGetUserInfo">获取用户信息</button>
     </div>
@@ -63,7 +64,8 @@
         dat:{},
         userInfo:{},
         logStates:true,
-        url:'pages/rewordshop/main'
+        url:'pages/rewordshop/main',
+        userNumber:''
       }
     },
     onPageScroll(e){  // 页面发生滚动
@@ -144,6 +146,19 @@
       }
     },
     methods:{
+      userNum(){
+        wx.getWeRunData({
+            success(res) {
+              console.log(res)
+                this.userNumber = res.encryptedData
+              wx.showToast({
+              title: '获取成功',
+              icon: 'success',
+              duration: 2000
+            })
+            }
+        })
+      },
       setArr(){
         wx.showActionSheet({
           itemList: ['A', 'B', 'C'],
@@ -268,7 +283,7 @@
       },
       goReword(){
         wx.navigateTo({
-          url:'/pages/shopReword/main'
+          url:'/pages/index/main'
         })
       },
       goDetail(id){
