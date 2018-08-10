@@ -23,10 +23,11 @@ export default {
       'pages/index/main',  // 案例demo
       'pages/pag/main',
       'pages/scroll/main',
-      '^pages/rewordshop/main',  // 积分商城
+      'pages/rewordshop/main',  // 积分商城
       'pages/shopDetail/main',
       'pages/shopReword/main',
-      'pages/echart/main'  // echart饼状图
+      'pages/echart/main',  // echart饼状图
+      '^pages/animat/main'  // echart饼状图
     ],
     window: {
       backgroundTextStyle: 'light',
