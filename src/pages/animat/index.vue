@@ -64,7 +64,7 @@
 .r{
   width: 100rpx;
   height: 100rpx;
-  border-radius: 100%;
+  border-radius: 70%;
   background: red;
   margin: 200rpx auto;
 }
